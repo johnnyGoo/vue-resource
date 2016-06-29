@@ -1,0 +1,3 @@
+<?php
+echo json_encode(array('POST'=>$_POST,'GET'=>$_GET,'COOKIE'=>$_COOKIE,'HTTP_RAW_POST_DATA'=>$HTTP_RAW_POST_DATA), JSON_UNESCAPED_UNICODE);
+ ?>

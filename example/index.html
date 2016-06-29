@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Vue Resource example</title>
+    <script src="vue.js"></script>
+    <script src="../dist/vue-resource.min.js"></script>
+
+
+</head>
+<body id="vue">
+</body>
+<script>
+//    Vue.http.options.emulateJSON = true; //设置post编码
+    new Vue({
+        el: "#vue",
+
+        ready: function () {
+            //get
+            this.$http.get('data.php', {params: {f: 1001}}).then(function (response) {
+                console.log('get:', response.json());
+            }, function (response) {
+                console.log(response.status);
+            });
+
+            //post
+            this.$http.post('data.php', {a: 10, b: 100, c: 1000}).then(function (response) {
+                console.log('post:', response.json());
+            }, function (response) {
+                console.log(response.status);
+            });
+
+            //jsonp
+
+            this.$http.jsonp('http://ecdh5.unicef.cn/wechat/?', {params: {url: 'http://2smart.cn/'}}).then(function (response) {
+                console.log('jsonp:', response.json());
+
+            }, function (response) {
+                console.log('error', response.status);
+            });
+        }
+    })
+</script>
+</html>
